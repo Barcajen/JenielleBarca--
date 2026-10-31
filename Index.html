@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For you Lovey🤍</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:'Trebuchet MS',sans-serif;
+ background:linear-gradient(135deg,#ffc4d6,#ffe4ed,#d9c7ff);
+ color:#914768;
+ text-align:center;
+ min-height:100vh;
+ overflow-x:hidden;
+}
+.hearts span{
+ position:fixed;bottom:-30px;
+ animation:float 7s linear infinite;
+ pointer-events:none;
+}
+@keyframes float{
+ to{transform:translateY(-110vh) rotate(360deg);opacity:0}
+}
+.container{
+ width:90%;max-width:470px;
+ margin:35px auto;padding:25px 20px;
+ background:#ffffffdf;
+ border-radius:28px;
+ box-shadow:0 10px 35px #a65c8050;
+}
+h1{color:#df6493}
+.teddy{font-size:85px;animation:bounce 2s infinite}
+@keyframes bounce{
+ 50%{transform:translateY(-12px)}
+}
+button{
+ border:0;border-radius:30px;
+ background:#f58bb1;color:white;
+ padding:13px 24px;font-size:16px;
+ margin:8px;cursor:pointer;
+}
+button:active{transform:scale(.95)}
+#main{display:none}
+#letter{
+ display:none;background:#fff0f5;
+ padding:18px;border-radius:20px;
+ line-height:1.8;text-align:left;
+ animation:appear 1s;
+}
+@keyframes appear{
+ from{opacity:0;transform:translateY(15px)}
+ to{opacity:1;transform:translateY(0)}
+}
+.photo{
+ width:100%;height:190px;
+ object-fit:cover;border-radius:18px;
+ background:#ffe0eb;
+}
+.gift{font-size:95px;cursor:pointer}
+.small{font-size:13px;color:#b57891}
+</style>
+</head>
+
+<body>
+<div class="hearts" id="hearts"></div>
+
+<section class="container" id="opening">
+ <div class="teddy">🧸💗</div>
+ <h1>For My Lovey🤍</h1>
+ <h3>Happy November 1st!</h3>
+ <p>I have a little surprise for you. 🥺</p>
+ <div class="gift" onclick="openGift()">🎁</div>
+ <button onclick="openGift()">Open your gift 💌</button>
+ <p class="small">A little something made just for you.</p>
+</section>
+
+<section class="container" id="main">
+ <div class="teddy">🐻‍❄️💕</div>
+ <h1>A New Month With You</h1>
+ <p>November 1, 2026</p>
+
+ <h3>To My Favorite Person ❤️</h3>
+
+ <!-- REPLACE THIS WITH YOUR PHOTO -->
+ <img class="photo" src="couple.jpg" alt="Our memories"
+ onerror="this.style.display='none'">
+
+ <p>
+ New month, same person I want to love.
+ Even if distance keeps us apart,
+ you're still someone I want to make smile.
+ </p>
+
+ <button onclick="showLetter()">Read my letter 💌</button>
+
+ <div id="letter">
+ <h2>My November Letter ❤️</h2>
+
+ Hi, lovey! 🥹
+
+ <p>
+ Happy first day of November, my love!
+ Another month has come, and I just want
+ to remind you how special you are to me.
+ </p>
+
+ <p>
+ I know we're miles apart, and sometimes
+ I wish I could be beside you, hug you,
+ hold your hand, and see your smile in person.
+ </p>
+
+ <p>
+ But even with this distance, I hope you
+ never forget that someone is always
+ wishing for your happiness.
+ </p>
+
+ <p>
+ I hope this November brings you peace,
+ happiness, good health, and countless reasons
+ to smile. You deserve beautiful things.
+ </p>
+
+ <p>
+ I may not always say the right words,
+ but I'll keep learning how to love you
+ better. Thank you for being you.
+ </p>
+
+ <h3 style="text-align:center">
+ I love you, my favorite person. ❤️
+ </h3>
+ <p style="text-align:center">Forever sending hugs from afar. 🤗</p>
+ </div>
+
+ <h2>🎵 A Song For You</h2>
+ <p class="small">Add your favorite song below.</p>
+
+ <audio controls loop style="width:100%">
+ <source src="music.mp3" type="audio/mpeg">
+ </audio>
+
+ <h2>One Last Surprise 💗</h2>
+ <button onclick="surprise()">Tap me 🥺</button>
+ <h2 id="last"></h2>
+
+ <p class="small">Made with love, just for you. ❤️</p>
+</section>
+
+<script>
+function openGift(){
+ document.getElementById("opening").style.display="none";
+ document.getElementById("main").style.display="block";
+ hearts(25);
+ window.scrollTo(0,0);
+}
+
+function showLetter(){
+ let letter=document.getElementById("letter");
+ letter.style.display="block";
+ letter.scrollIntoView({behavior:"smooth"});
+ hearts(15);
+}
+
+function surprise(){
+ document.getElementById("last").innerHTML=
+ "You are my favorite notification, my sweetest thought, and my special person. I hope I made you smile today! ❤️🥹";
+ hearts(40);
+}
+
+function hearts(amount){
+ for(let i=0;i<amount;i++){
+  let h=document.createElement("span");
+  h.innerHTML=["💗","💕","❤️","💖","🌸"][Math.floor(Math.random()*5)];
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=(18+Math.random()*20)+"px";
+  h.style.animationDuration=(4+Math.random()*5)+"s";
+  document.getElementById("hearts").appendChild(h);
+  setTimeout(()=>h.remove(),9000);
+ }
+}
+setInterval(()=>hearts(1),1200);
+</script>
+</body>
+</html>
